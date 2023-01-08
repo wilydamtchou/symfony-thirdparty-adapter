@@ -21,7 +21,7 @@ willydamtchou_symfony_thirdparty_adapter_balance:
 
 willydamtchou_symfony_thirdparty_adapter_check:
   path: /api/verify
-  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\CheckController::verify
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\VerifyController::verify
   methods : POST
 
 willydamtchou_symfony_thirdparty_adapter_confirm:
