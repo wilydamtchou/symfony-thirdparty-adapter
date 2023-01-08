@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Parameter;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Parameter;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\ParameterManager;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\ParameterEnvNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\ParameterNotFoundException;
