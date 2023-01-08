@@ -1,0 +1,20 @@
+services:
+  PaymentRequestConverter:
+    class: 'Willydamtchou\SymfonyThirdpartyAdapter\Converter\PaymentRequestConverter'
+    tags:
+      - { name: request.param_converter, converter: PaymentRequestConverter }
+
+  VerifyRequestConverter:
+    class: 'Willydamtchou\SymfonyThirdpartyAdapter\Converter\VerifyRequestConverter'
+    tags:
+      - { name: request.param_converter, converter: VerifyRequestConverter }
+
+  StatusRequestConverter:
+    class: 'Willydamtchou\SymfonyThirdpartyAdapter\Converter\StatusRequestConverter'
+    tags:
+      - { name: request.param_converter, converter: StatusRequestConverter }
+
+  OptionRequestConverter:
+    class: 'Willydamtchou\SymfonyThirdpartyAdapter\Converter\OptionRequestConverter'
+    tags:
+      - { name: request.param_converter, converter: OptionRequestConverter }
