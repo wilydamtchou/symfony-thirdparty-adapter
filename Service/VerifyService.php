@@ -16,7 +16,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\VerifyService as BaseVeri
 
 class VerifyService implements BaseVerifyService
 {
-    private OptionManager $optionManager;
+    protected OptionManager $optionManager;
 
     public function __construct(OptionManager $optionManager)
     {

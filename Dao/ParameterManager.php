@@ -13,8 +13,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\SystemExceptionMessage;
 
 class ParameterManager implements BaseParameterManager
 {
-    private EntityManagerInterface $entityManager;
-    private UtilService $utilService;
+    protected EntityManagerInterface $entityManager;
+    protected UtilService $utilService;
 
     public function __construct(EntityManagerInterface $entityManager, UtilService $utilService)
     {

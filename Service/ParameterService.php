@@ -10,7 +10,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\ParameterService as BaseP
 
 class ParameterService implements BaseParameterService
 {
-    private ParameterManager $parameterManager;
+    protected ParameterManager $parameterManager;
 
     public function __construct(ParameterManager $parameterManager)
     {

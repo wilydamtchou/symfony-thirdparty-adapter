@@ -19,8 +19,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 #[Route('/api')]
 class ConfirmController extends AbstractController implements BaseConfirmController
 {
-    private ConfirmService $confirmService;
-    private StatusService $statusService;
+    protected ConfirmService $confirmService;
+    protected StatusService $statusService;
 
     public function __construct(ConfirmService $confirmService, StatusService $statusService)
     {

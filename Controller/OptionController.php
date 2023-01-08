@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\Request;
 #[Route('/api/option')]
 class OptionController extends AbstractController implements BaseOptionController
 {
-    private OptionService $optionService;
+    protected OptionService $optionService;
 
     public function __construct(OptionService $optionService)
     {

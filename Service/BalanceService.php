@@ -10,7 +10,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\ParameterService;
 
 class BalanceService implements BaseBalanceService
 {
-    private ParameterService $parameterService;
+    protected ParameterService $parameterService;
 
     public function __construct(ParameterService $parameterService)
     {

@@ -12,7 +12,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\PaymentProcessService as 
 
 class PaymentProcessService implements BasePaymentProcessService
 {
-    private HttpService $httpService;
+    protected HttpService $httpService;
 
     public function __construct(HttpService $httpService)
     {

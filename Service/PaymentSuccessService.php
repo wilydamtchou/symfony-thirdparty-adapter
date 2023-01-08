@@ -15,8 +15,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService;
 
 class PaymentSuccessService implements BasePaymentSuccessService
 {
-    private TransactionService $transactionService;
-    private ReferenceService $referenceService;
+    protected TransactionService $transactionService;
+    protected ReferenceService $referenceService;
 
     public function __construct(TransactionService $transactionService, ReferenceService $referenceService)
     {

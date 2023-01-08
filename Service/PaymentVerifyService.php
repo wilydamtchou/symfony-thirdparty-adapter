@@ -20,8 +20,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\VerifyService;
 
 class PaymentVerifyService implements BasePaymentVerifyService
 {
-    private TransactionService $transactionService;
-    private VerifyService $verifyService;
+    protected TransactionService $transactionService;
+    protected VerifyService $verifyService;
 
     public function __construct(TransactionService $transactionService, VerifyService $verifyService)
     {

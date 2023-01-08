@@ -13,7 +13,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\MessagingService as BaseM
 
 class MessagingService implements BaseMessagingService
 {
-    private HttpService $httpService;
+    protected HttpService $httpService;
 
     public function __construct(HttpService $httpService)
     {

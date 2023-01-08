@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 #[Route('/api')]
 class BalanceController extends AbstractController implements BaseBalanceController
 {
-    private BalanceService $balanceService;
+    protected BalanceService $balanceService;
 
     public function __construct(BalanceService $balanceService)
     {

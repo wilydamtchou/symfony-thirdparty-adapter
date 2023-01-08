@@ -11,8 +11,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService;
 
 class CancelService implements BaseCancelService
 {
-    private TransactionService $transactionService;
-    private ReferenceService $referenceService;
+    protected TransactionService $transactionService;
+    protected ReferenceService $referenceService;
 
     public function __construct(TransactionService $transactionService, ReferenceService $referenceService)
     {

@@ -21,7 +21,7 @@ use Nelmio\ApiDocBundle\Annotation\Security;
 #[Route('/api')]
 class VerifyController extends AbstractController implements BaseVerifyController
 {
-    private VerifyService $verifyService;
+    protected VerifyService $verifyService;
 
     public function __construct(VerifyService $verifyService)
     {

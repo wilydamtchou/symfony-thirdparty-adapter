@@ -19,11 +19,11 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\UtilService;
 
 class ReferenceService implements BaseReferenceService
 {
-    private ReferenceManager $referenceManager;
-    private OptionService $optionService;
-    private HttpService $httpService;
-    private VerifyService $verifyService;
-    private UtilService $utilService;
+    protected ReferenceManager $referenceManager;
+    protected OptionService $optionService;
+    protected HttpService $httpService;
+    protected VerifyService $verifyService;
+    protected UtilService $utilService;
 
     public function __construct(ReferenceManager $referenceManager, OptionService $optionService, HttpService $httpService, VerifyService $verifyService, UtilService $utilService)
     {

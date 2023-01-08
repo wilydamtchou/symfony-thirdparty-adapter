@@ -22,8 +22,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\OptionService as BaseOpti
 
 class OptionService implements BaseOptionService
 {
-    private OptionManager $optionManager;
-    private UtilService $utilService;
+    protected OptionManager $optionManager;
+    protected UtilService $utilService;
 
     public function __construct(OptionManager $optionManager, UtilService $utilService)
     {

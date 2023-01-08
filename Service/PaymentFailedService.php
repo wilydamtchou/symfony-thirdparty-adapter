@@ -10,7 +10,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService;
 
 class PaymentFailedService implements BasePaymentFailedService
 {
-    private TransactionService $transactionService;
+    protected TransactionService $transactionService;
 
     public function __construct(TransactionService $transactionService)
     {

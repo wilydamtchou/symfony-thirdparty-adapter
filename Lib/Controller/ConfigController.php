@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class ConfigController extends AbstractController
 {
-    private UtilService $utilService;
+    protected UtilService $utilService;
 
     public function __construct(UtilService $utilService)
     {

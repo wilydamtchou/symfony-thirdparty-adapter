@@ -13,8 +13,8 @@ use Symfony\Component\Yaml\Yaml;
 
 class OptionFixtures extends Fixture
 {
-    private OptionService $optionService;
-    private KernelInterface $kernel;
+    protected OptionService $optionService;
+    protected KernelInterface $kernel;
 
     public function __construct(OptionService $optionService, KernelInterface $kernel)
     {
@@ -27,7 +27,7 @@ class OptionFixtures extends Fixture
         $this->loadOption($manager);
     }
 
-    private function loadOption(ObjectManager $manager)
+    protected function loadOption(ObjectManager $manager)
     {
         $data = Yaml::parse(file_get_contents($this->kernel->getProjectDir().$_ENV['OPTIONS_FILE']));
 

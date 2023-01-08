@@ -12,7 +12,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService as Bas
 
 class TransactionService implements BaseTransactionService
 {
-    private TransactionManager $transactionManager;
+    protected TransactionManager $transactionManager;
 
     public function __construct(TransactionManager $transactionManager)
     {

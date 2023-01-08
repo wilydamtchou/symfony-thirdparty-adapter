@@ -11,7 +11,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\ParameterService;
 
 class HttpService implements BaseHttpService
 {
-    private ParameterService $parameterService;
+    protected ParameterService $parameterService;
 
     public function __construct(ParameterService $parameterService)
     {
@@ -147,7 +147,7 @@ class HttpService implements BaseHttpService
      *
      * @throws NetworkException|GeneralNetworkException
      */
-    private function sendRequest(string $url, array $params): array
+    protected function sendRequest(string $url, array $params): array
     {
         $result = null;
 

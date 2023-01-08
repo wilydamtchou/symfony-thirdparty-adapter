@@ -21,8 +21,8 @@ use Nelmio\ApiDocBundle\Annotation\Security;
 #[Route('/api')]
 class PaymentController extends AbstractController implements BasePaymentController
 {
-    private PaymentService $paymentService;
-    private StatusService $statusService;
+    protected PaymentService $paymentService;
+    protected StatusService $statusService;
 
     public function __construct(PaymentService $paymentService, StatusService $statusService)
     {

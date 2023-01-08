@@ -22,8 +22,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 #[Route('/api/reference')]
 class ReferenceController extends AbstractController implements BaseReferenceController
 {
-    private OptionService $optionService;
-    private ReferenceService $referenceService;
+    protected OptionService $optionService;
+    protected ReferenceService $referenceService;
 
     public function __construct(OptionService $optionService, ReferenceService $referenceService)
     {

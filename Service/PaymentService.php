@@ -16,15 +16,15 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService;
 
 class PaymentService implements BasePaymentService
 {
-    private TransactionService $transactionService;
-    private OptionService $optionService;
-    private NotificationService $notificationService;
-    private ReferenceService $referenceService;
-    private PaymentSuccessService $paymentSuccessService;
-    private PaymentErrorService $paymentErrorService;
-    private PaymentFailedService $paymentFailedService;
-    private PaymentVerifyService $paymentVerifyService;
-    private PaymentProcessService $paymentProcessService;
+    protected TransactionService $transactionService;
+    protected OptionService $optionService;
+    protected NotificationService $notificationService;
+    protected ReferenceService $referenceService;
+    protected PaymentSuccessService $paymentSuccessService;
+    protected PaymentErrorService $paymentErrorService;
+    protected PaymentFailedService $paymentFailedService;
+    protected PaymentVerifyService $paymentVerifyService;
+    protected PaymentProcessService $paymentProcessService;
 
     public function __construct(
         TransactionService $transactionService,
@@ -94,7 +94,7 @@ class PaymentService implements BasePaymentService
         return $transaction;
     }
 
-    private function generateTransaction(PaymentRequest $paymentRequest): Transaction
+    protected function generateTransaction(PaymentRequest $paymentRequest): Transaction
     {
         $transaction = new Transaction();
 
@@ -110,7 +110,7 @@ class PaymentService implements BasePaymentService
     /**
      * @throws BadApiResponse|PaymentAPIException|BadApiResponse
      */
-    private function generateProviderPaymentResponse(?array $paymentResult): ProviderPaymentResponse
+    protected function generateProviderPaymentResponse(?array $paymentResult): ProviderPaymentResponse
     {
         try {
             return $this->paymentProcessService->generateProviderPaymentResponse($paymentResult);

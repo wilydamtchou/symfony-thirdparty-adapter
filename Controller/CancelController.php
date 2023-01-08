@@ -19,8 +19,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 #[Route('/api')]
 class CancelController extends AbstractController implements BaseCancelController
 {
-    private CancelService $cancelService;
-    private StatusService $statusService;
+    protected CancelService $cancelService;
+    protected StatusService $statusService;
 
     public function __construct(CancelService $cancelService, StatusService $statusService)
     {

@@ -18,8 +18,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\SystemExceptionMessage;
 
 class OptionManager implements BaseOptionManager
 {
-    private EntityManagerInterface $entityManager;
-    private UtilService $utilService;
+    protected EntityManagerInterface $entityManager;
+    protected UtilService $utilService;
 
     public function __construct(EntityManagerInterface $entityManager, UtilService $utilService)
     {
@@ -159,7 +159,7 @@ class OptionManager implements BaseOptionManager
     /**
      * @throws \Exception
      */
-    private function generateEntity(BaseOption $entity): Option
+    protected function generateEntity(BaseOption $entity): Option
     {
         $entity->optionId = $this->utilService->randomString($_ENV['APP_DB_ID_LENGTH']);
 

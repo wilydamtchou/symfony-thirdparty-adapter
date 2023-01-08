@@ -13,7 +13,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\TransactionService;
 
 class PaymentErrorService implements BasePaymentErrorService
 {
-    private TransactionService $transactionService;
+    protected TransactionService $transactionService;
 
     public function __construct(TransactionService $transactionService)
     {

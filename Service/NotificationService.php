@@ -10,8 +10,8 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\ReferenceService;
 
 class NotificationService implements BaseNotificationService
 {
-    private MessagingService $messagingService;
-    private ReferenceService $referenceService;
+    protected MessagingService $messagingService;
+    protected ReferenceService $referenceService;
 
     public function __construct(MessagingService $messagingService, ReferenceService $referenceService)
     {
