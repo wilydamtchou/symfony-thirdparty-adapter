@@ -1,0 +1,77 @@
+willydamtchou_symfony_thirdparty_adapter_app_default:
+  path: /
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\AppController::default
+
+willydamtchou_symfony_thirdparty_adapter_app_error:
+  path: /error
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\AppController::error
+
+willydamtchou_symfony_thirdparty_adapter_config_parameters:
+  path: /config/parameters
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\ConfigController::parameters
+
+willydamtchou_symfony_thirdparty_adapter_config_exceptions:
+  path: /config/exceptions
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\ConfigController::exceptions
+
+willydamtchou_symfony_thirdparty_adapter_balance:
+  path: /api/balance
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\BalanceController::balance
+  methods : GET
+
+willydamtchou_symfony_thirdparty_adapter_check:
+  path: /api/verify
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\CheckController::verify
+  methods : POST
+
+willydamtchou_symfony_thirdparty_adapter_confirm:
+  path: /api/confirm/{transactionId}
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\ConfirmController::confirm
+  methods : POST
+
+willydamtchou_symfony_thirdparty_adapter_cancel:
+  path: /api/cancel/{transactionId}
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\CancelController::cancel
+  methods : POST
+
+willydamtchou_symfony_thirdparty_adapter_option_create:
+  path: /api/option
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\OptionController::create
+  methods : POST
+
+willydamtchou_symfony_thirdparty_adapter_option_list:
+  path: /api/option
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\OptionController::list
+  methods : GET
+
+willydamtchou_symfony_thirdparty_adapter_payment:
+  path: /api/payment
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\PaymentController::pay
+  methods : POST
+
+willydamtchou_symfony_thirdparty_adapter_reference_list_options:
+  path: /api/reference/{reference}/option
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\ReferenceController::listReference
+  methods : GET
+
+willydamtchou_symfony_thirdparty_adapter_reference_reference:
+  path: /api/reference/{reference}
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\ReferenceController::reference
+  methods : GET
+
+willydamtchou_symfony_thirdparty_adapter_reference_status:
+  path: /api/status
+  controller: Willydamtchou\SymfonyThirdpartyAdapter\Controller\StatusController::status
+  methods : POST
+
+app.swagger:
+  path: /config/routes
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger }
+
+## Requires the Asset component and the Twig bundle
+## $ composer require twig asset
+app.swagger_ui:
+  path: /api/doc
+  methods: GET
+  defaults: { _controller: nelmio_api_doc.controller.swagger_ui }

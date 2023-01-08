@@ -4,7 +4,7 @@ namespace Willydamtchou\SymfonyThirdpartyAdapter\Controller;
 
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Route;
-use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Controller\CheckController as BaseCheckController;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Controller\VerifyController as BaseVerifyController;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\BasicResponse;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\VerifyRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\AppConstants;
@@ -19,7 +19,7 @@ use Nelmio\ApiDocBundle\Annotation\Security;
  * Class PaymentController.
  */
 #[Route('/api')]
-class CheckController extends AbstractController implements BaseCheckController
+class VerifyController extends AbstractController implements BaseVerifyController
 {
     private VerifyService $verifyService;
 
