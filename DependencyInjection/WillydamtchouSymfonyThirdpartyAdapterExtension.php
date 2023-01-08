@@ -1,6 +1,6 @@
 <?php
 
-namespace Willydamtchou\SymfonyThirdpartyAdapter;
+namespace Willydamtchou\SymfonyThirdpartyAdapter\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -14,7 +14,7 @@ class WillydamtchouSymfonyThirdpartyAdapterExtension extends Extension
     {
         $loader = new YamlFileLoader(
             $containerBuilder,
-            new FileLocator(__DIR__.'/config')
+            new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yaml');
     }
