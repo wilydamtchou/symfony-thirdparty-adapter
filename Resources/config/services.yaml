@@ -6,7 +6,7 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
     Willydamtchou\SymfonyThirdpartyAdapter\:
-        resource: '../'
+        resource: '../../'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
