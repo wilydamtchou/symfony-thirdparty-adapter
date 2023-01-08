@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Reference;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Reference;
 use Willydamtchou\SymfonyThirdpartyAdapter\Model\AppConstants as LocalAppConstants;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\ReferenceManager;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\Reference as ReferenceDTO;

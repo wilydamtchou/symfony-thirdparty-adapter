@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\PaymentResponse;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\StatusRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction as BaseTransaction;

@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Repository;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Reference;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Reference;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

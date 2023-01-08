@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\IllegalStatusCancelException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\Status;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\CancelService as BaseCancelService;

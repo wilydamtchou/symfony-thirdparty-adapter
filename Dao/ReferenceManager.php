@@ -2,11 +2,10 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Dao;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Reference;
 use Willydamtchou\SymfonyThirdpartyAdapter\Service\UtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\ReferenceManager as BaseReferenceManager;
-use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Reference as BaseReference;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Reference;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\AppConstants;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\Status;
@@ -16,6 +15,7 @@ class ReferenceManager implements BaseReferenceManager
 {
     protected EntityManagerInterface $entityManager;
     protected UtilService $utilService;
+    protected string $class = Reference::class;
 
     public function __construct(EntityManagerInterface $entityManager, UtilService $utilService)
     {
@@ -37,7 +37,7 @@ class ReferenceManager implements BaseReferenceManager
     /**
      * @throws \Exception
      */
-    public function save(BaseReference $entity): Reference
+    public function save(Reference $entity): Reference
     {
         $entity->referenceId = $this->utilService->randomString($_ENV['APP_DB_ID_LENGTH']);
 
@@ -56,7 +56,7 @@ class ReferenceManager implements BaseReferenceManager
     /**
      * @throws \Exception
      */
-    public function update(BaseReference $entity): Reference
+    public function update(Reference $entity): Reference
     {
         $entity->lastUpdatedDate = new \DateTime(AppConstants::NOW, new \DateTimeZone($_ENV['TIME_ZONE']));
 
@@ -71,7 +71,7 @@ class ReferenceManager implements BaseReferenceManager
      */
     public function find(int $id): Reference
     {
-        $entity = $this->entityManager->getRepository(Reference::class)->find($id);
+        $entity = $this->entityManager->getRepository($this->class)->find($id);
 
         if (!$entity) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::REFERENCE, AppConstants::ID, $id));
@@ -89,7 +89,7 @@ class ReferenceManager implements BaseReferenceManager
      */
     public function findOneByReferenceId(int $referenceId, bool $throw = true): ?Reference
     {
-        $entity = $this->entityManager->getRepository(Reference::class)->findOneByReferenceId($referenceId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByReferenceId($referenceId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::REFERENCE, AppConstants::REFERENCE_ID, $referenceId));
@@ -107,7 +107,7 @@ class ReferenceManager implements BaseReferenceManager
      */
     public function findOneByReferenceNumber(string $referenceNumber, bool $throw = true): ?Reference
     {
-        $entity = $this->entityManager->getRepository(Reference::class)->findOneByReferenceNumber($referenceNumber);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByReferenceNumber($referenceNumber);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::REFERENCE, AppConstants::REFERENCE_NUMBER, $referenceNumber));

@@ -2,7 +2,6 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\OptionManager;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\VerifyRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\BadEmailException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\BadPhoneException;
@@ -16,11 +15,11 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Service\VerifyService as BaseVeri
 
 class VerifyService implements BaseVerifyService
 {
-    protected OptionManager $optionManager;
+    protected OptionService $optionService;
 
-    public function __construct(OptionManager $optionManager)
+    public function __construct(OptionService $optionService)
     {
-        $this->optionManager = $optionManager;
+        $this->optionService = $optionService;
     }
 
     /**
@@ -52,7 +51,7 @@ class VerifyService implements BaseVerifyService
             if (!$option) {
                 throw new InvalidOptionException($option);
             }
-            $optionO = $this->optionManager->findOneBySlug($option, false);
+            $optionO = $this->optionService->findOneBySlug($option, false);
             if (!$optionO) {
                 throw new InvalidOptionException($option);
             }

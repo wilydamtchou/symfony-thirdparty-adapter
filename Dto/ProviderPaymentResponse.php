@@ -6,13 +6,4 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\ProviderPaymentResponse as Ba
 
 class ProviderPaymentResponse extends BaseProviderPaymentResponse
 {
-    /**
-     * @Serializer\Type("string")
-     */
-    public ?string $txnDataMessage = null;
-
-    /**
-     * @Serializer\Type("string")
-     */
-    public ?string $txnDataStatus = null;
 }

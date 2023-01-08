@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\TransactionManager;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction as BaseTransaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityAlReadyExistException;

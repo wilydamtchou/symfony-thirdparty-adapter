@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Repository;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

@@ -2,7 +2,7 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Repository;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Option;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Option;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

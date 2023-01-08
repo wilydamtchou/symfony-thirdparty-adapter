@@ -2,11 +2,10 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Dao;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Service\UtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\TransactionManager as BaseTransactionManager;
-use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction as BaseTransaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\AppConstants;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\Status;
@@ -16,6 +15,7 @@ class TransactionManager implements BaseTransactionManager
 {
     protected EntityManagerInterface $entityManager;
     protected UtilService $utilService;
+    protected string $class = Transaction::class;
 
     public function __construct(EntityManagerInterface $entityManager, UtilService $utilService)
     {
@@ -26,7 +26,7 @@ class TransactionManager implements BaseTransactionManager
     /**
      * @throws \Exception
      */
-    public function save(BaseTransaction $entity): Transaction
+    public function save(Transaction $entity): Transaction
     {
         $entity->transactionId = $this->utilService->randomString($_ENV['APP_DB_ID_LENGTH']);
 
@@ -43,7 +43,7 @@ class TransactionManager implements BaseTransactionManager
     /**
      * @throws \Exception
      */
-    public function update(BaseTransaction $entity): Transaction
+    public function update(Transaction $entity): Transaction
     {
         $entity->lastUpdatedDate = new \DateTime(AppConstants::NOW, new \DateTimeZone($_ENV['TIME_ZONE']));
 
@@ -58,7 +58,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function find(int $id): Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->find($id);
+        $entity = $this->entityManager->getRepository($this->class)->find($id);
 
         if (!$entity) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::ID, $id));
@@ -72,7 +72,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByTransactionId(int $transactionId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByTransactionId($transactionId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByTransactionId($transactionId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::TRANSACTION_ID, $transactionId));
@@ -86,7 +86,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByFinancialId(string $financialId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByFinancialId($financialId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByFinancialId($financialId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::FINANCIAL_ID, $financialId));
@@ -100,7 +100,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByApplicationId(string $applicationId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByApplicationId($applicationId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByApplicationId($applicationId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::APPLICATION_ID, $applicationId));
@@ -114,7 +114,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByExternalId(string $externalId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByExternalId($externalId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByExternalId($externalId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::EXTERNAL_ID, $externalId));
@@ -128,7 +128,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByRequestId(string $requestId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByRequestId($requestId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByRequestId($requestId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::REQUEST_ID, $requestId));
@@ -142,7 +142,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneByProviderId(string $providerId, bool $throw = true): ?Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneByProviderId($providerId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByProviderId($providerId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, AppConstants::PROVIDER_ID, $providerId));
@@ -156,7 +156,7 @@ class TransactionManager implements BaseTransactionManager
      */
     public function findOneBy(array $data): Transaction
     {
-        $entity = $this->entityManager->getRepository(Transaction::class)->findOneBy($data);
+        $entity = $this->entityManager->getRepository($this->class)->findOneBy($data);
 
         if (!$entity) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::TRANSACTION, http_build_query($data, '', ','), ''));
@@ -206,7 +206,7 @@ class TransactionManager implements BaseTransactionManager
     /**
      * @throws \Exception
      */
-    public function updateProviderData(int $id, BaseTransaction $transaction): Transaction
+    public function updateProviderData(int $id, Transaction $transaction): Transaction
     {
         $entity = $this->find($id);
 

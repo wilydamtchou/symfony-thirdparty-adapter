@@ -2,13 +2,14 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Option;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Option;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\OptionManager;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionRequestCollectionRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionResponse;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Option as BaseOption;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\BadReferenceException;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\InvalidReferenceSlugOptionException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\OptionAlreadyExistException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\OptionApiDisabledException;
@@ -165,5 +166,12 @@ class OptionService implements BaseOptionService
         }
 
         return $option;
+    }
+
+    /**
+     * @throws EntityNotFoundException
+     */
+    public function findOneBySlug(string $slug, bool $throw = true): ?Option {
+        return $this->optionManager->findOneBySlug($slug, $throw);
     }
 }

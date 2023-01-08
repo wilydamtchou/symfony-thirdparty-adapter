@@ -2,11 +2,10 @@
 
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Dao;
 
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Parameter;
 use Willydamtchou\SymfonyThirdpartyAdapter\Service\UtilService;
 use Doctrine\ORM\EntityManagerInterface;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dao\ParameterManager as BaseParameterManager;
-use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Parameter as BaseParameter;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Parameter;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\AppConstants;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\SystemExceptionMessage;
@@ -15,6 +14,7 @@ class ParameterManager implements BaseParameterManager
 {
     protected EntityManagerInterface $entityManager;
     protected UtilService $utilService;
+    protected string $class = Parameter::class;
 
     public function __construct(EntityManagerInterface $entityManager, UtilService $utilService)
     {
@@ -25,7 +25,7 @@ class ParameterManager implements BaseParameterManager
     /**
      * @throws \Exception
      */
-    public function save(BaseParameter $entity): Parameter
+    public function save(Parameter $entity): Parameter
     {
         $entity->parameterId = $this->utilService->randomString($_ENV['APP_DB_ID_LENGTH']);
 
@@ -44,7 +44,7 @@ class ParameterManager implements BaseParameterManager
     /**
      * @throws \Exception
      */
-    public function update(BaseParameter $entity): Parameter
+    public function update(Parameter $entity): Parameter
     {
         $entity->lastUpdatedDate = new \DateTime(AppConstants::NOW, new \DateTimeZone($_ENV['TIME_ZONE']));
 
@@ -59,7 +59,7 @@ class ParameterManager implements BaseParameterManager
      */
     public function find(int $id): Parameter
     {
-        $entity = $this->entityManager->getRepository(Parameter::class)->find($id);
+        $entity = $this->entityManager->getRepository($this->class)->find($id);
 
         if (!$entity) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::PARAMETER, AppConstants::ID, $id));
@@ -73,7 +73,7 @@ class ParameterManager implements BaseParameterManager
      */
     public function findOneByParameterId(int $parameterId, bool $throw = true): ?Parameter
     {
-        $entity = $this->entityManager->getRepository(Parameter::class)->findOneByParameterId($parameterId);
+        $entity = $this->entityManager->getRepository($this->class)->findOneByParameterId($parameterId);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::PARAMETER, AppConstants::PARAMETER_ID, $parameterId));
@@ -87,7 +87,7 @@ class ParameterManager implements BaseParameterManager
      */
     public function findOneBySlug(string $slug, bool $throw = true): ?Parameter
     {
-        $entity = $this->entityManager->getRepository(Parameter::class)->findOneBySlug($slug);
+        $entity = $this->entityManager->getRepository($this->class)->findOneBySlug($slug);
 
         if (!$entity && $throw) {
             throw new EntityNotFoundException(sprintf(SystemExceptionMessage::ENTITY_NOT_FOUND[AppConstants::MESSAGE], AppConstants::PARAMETER, AppConstants::SLUG, $slug));
@@ -99,7 +99,7 @@ class ParameterManager implements BaseParameterManager
     /**
      * @throws \Exception
      */
-    public function updateValue(string $slug, string $value): BaseParameter
+    public function updateValue(string $slug, string $value): Parameter
     {
         $parameter = $this->findOneBySlug($slug);
         $parameter->value = $value;

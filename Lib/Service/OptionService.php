@@ -6,6 +6,7 @@ use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionRequestCollectionRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\OptionResponse;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Option;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\EntityNotFoundException;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Model\OptionCollection;
 
 interface OptionService
@@ -24,4 +25,9 @@ interface OptionService
     public function generateOption(OptionRequest $request): Option;
 
     public function findByReferenceAndSlug(string $reference, string $slug): Option;
+
+    /**
+     * @throws EntityNotFoundException
+     */
+    public function findOneBySlug(string $slug, bool $throw = true): ?Option;
 }

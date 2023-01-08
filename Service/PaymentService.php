@@ -3,7 +3,7 @@
 namespace Willydamtchou\SymfonyThirdpartyAdapter\Service;
 
 use Willydamtchou\SymfonyThirdpartyAdapter\Dto\ProviderPaymentResponse;
-use Willydamtchou\SymfonyThirdpartyAdapter\Entity\Transaction;
+use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Entity\Transaction;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Dto\PaymentRequest;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\BadApiResponse;
 use Willydamtchou\SymfonyThirdpartyAdapter\Lib\Exception\PaymentAPIException;
